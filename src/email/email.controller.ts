@@ -15,9 +15,11 @@ export class EmailController {
       bathrooms,
       bedrooms,
       property,
+      service,
       pets,
       message,
     } = body;
+    console.log(body);
     try {
       await this.emailService.sendEmail(
         name,
@@ -27,6 +29,7 @@ export class EmailController {
         bathrooms,
         bedrooms,
         property,
+        service,
         pets,
         message,
       );
