@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { EmailService } from './email.service';
 
@@ -19,7 +20,6 @@ export class EmailController {
       pets,
       message,
     } = body;
-    console.log(body);
     try {
       await this.emailService.sendEmail(
         name,
@@ -35,7 +35,6 @@ export class EmailController {
       );
       return { mensagem: 'Email successfully sent' };
     } catch (error) {
-      console.log(error);
       return { mensagem: 'Error sending email' };
     }
   }
