@@ -26,7 +26,7 @@ export class EmailController {
         email,
         phoneNumber,
         city,
-        bathrooms,
+        bathrooms, 
         bedrooms,
         property,
         service,
@@ -42,6 +42,7 @@ export class EmailController {
   @Get('health-check')
   healthcheck() {
     const date = new Date()
+    console.log({ messagem: 'Server is up and running', hour: date.toLocaleString()})
     return { messagem: 'Server is up and running', hour: date.toLocaleString()};
   }
 }
