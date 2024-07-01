@@ -1,8 +1,6 @@
 import { MailerService } from '@nestjs-modules/mailer';
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
-import { Cron } from '@nestjs/schedule';
-import { firstValueFrom } from 'rxjs';
 
 @Injectable()
 export class EmailService {
@@ -10,18 +8,6 @@ export class EmailService {
     private mailerService: MailerService,
     private httpService: HttpService,
   ) {}
-
-  @Cron('*/14 * * * *')
-  async handleCron() {
-    try {
-      const response = await firstValueFrom(
-        this.httpService.get('http://localhost:3000/email/health-check'),
-      );
-      console.log('Server is up', response.data);
-    } catch (error) {
-      console.error('Server is down', error.message);
-    }
-  }
 
   async sendEmail(
     name: string,

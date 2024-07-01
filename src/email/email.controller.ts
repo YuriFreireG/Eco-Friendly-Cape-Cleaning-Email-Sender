@@ -21,7 +21,6 @@ export class EmailController {
       message,
     } = body;
     try {
-      await new Promise(resolve => setTimeout(resolve, 3000));
       await this.emailService.sendEmail(
         name,
         email,
@@ -38,11 +37,5 @@ export class EmailController {
     } catch (error) {
       return { mensagem: 'Error sending email' };
     }
-  }
-
-  @Get('health-check')
-  healthcheck() {
-    const date = new Date()
-    return { messagem: 'Server is up and running', hour: date.toLocaleString()};
   }
 }
