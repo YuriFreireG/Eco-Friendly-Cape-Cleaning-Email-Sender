@@ -38,4 +38,10 @@ export class EmailController {
       return { mensagem: 'Error sending email' };
     }
   }
+
+  @Get('health-check')
+  healthcheck() {
+    const date = new Date()
+    return { messagem: 'Server is up and running', hour: date.toLocaleString()};
+  }
 }
